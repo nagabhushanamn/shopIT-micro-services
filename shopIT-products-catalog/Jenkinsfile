@@ -16,7 +16,7 @@ node {
      		sh 'mvn package'
      	}
      }
-     stage('Dockerify"){
+     stage('Dockerify'){
      	dir(path){
      	    def app = docker.build "localhost:5000/pc-service"
             app.push()
