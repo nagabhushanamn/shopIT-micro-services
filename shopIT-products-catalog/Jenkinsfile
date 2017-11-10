@@ -2,14 +2,20 @@
 
 
 node {
+	def path="shopIT-products-catalog";
 	stage("checkout"){
 		 git url: 'https://github.com/nagabhushanamn/shopIT-micro-services.git',branch: 'master' 
 	}
-	stage("compile and test"){
-		def path="shopIT-products-catalog";
+	stage("build"){
 		dir(path){
 			sh "mvn clean test"
 		}
 	}
+	stage('package') {
+     	dir(path){
+     		sh 'mvn package'
+     	}
+     }
 }
 
+	
